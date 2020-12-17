@@ -1,0 +1,22 @@
+{
+  "name": "canvas-student-wrapper",
+  "description": "Exposes an object that contains a student's courses, their announcements, and their grades.",
+  "version": "1.0.0",
+  "author": "Aidan Dempster <aidan.dempster@gmail.com> (http://aidandev.ca)",
+  "main": "canvas.mjs",
+
+  "scripts": {
+    "start": "node testApi.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Veldrovive/canvas-student-wrapper.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Veldrovive/canvas-student-wrapper/issues"
+  },
+  "dependencies": {
+    "canvas-api-wrapper": "^3.3.5"
+  }
+}
