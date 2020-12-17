@@ -2,7 +2,7 @@
 Exposes an object that contains a student's courses, their announcements, and their grades.
 
 ## Usage:
-Install with `npm install canvas-student-wrapper -S` and import using `const canvas = require('canvas-student-wrapper')` or `import canvas from 'canvas-student-wrapper'`.
+Install with `npm install canvas-student-wrapper -S` and import using `import Canvas from 'canvas-student-wrapper'` in a `.mjs` file.
 
 To create a student instance, you need two things: a student access token and the year start date.
 
