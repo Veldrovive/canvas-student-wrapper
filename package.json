@@ -1,7 +1,7 @@
 {
   "name": "canvas-student-wrapper",
   "description": "Exposes an object that contains a student's courses, their announcements, and their grades.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Aidan Dempster <aidan.dempster@gmail.com> (http://aidandev.ca)",
   "main": "canvas.mjs",
   "scripts": {
