@@ -2,18 +2,30 @@
 Exposes an object that contains a student's courses, their announcements, and their grades.
 
 ## Usage:
-Install with `npm install canvas-student-wrapper -S` and import using `import Canvas from 'canvas-student-wrapper'` in a `.mjs` file.
+Install with `npm install canvas-student-wrapper -S` and import using 
 
-To create a student instance, you need two things: a student access token and the year start date.
+`import StudentCanvas, { RedactedCanvas } from 'canvas-student-wrapper'` in a `.mjs` file.
 
 You can generate a student access token by going to canvas, navigating to the [profile settting page](https://q.utoronto.ca/profile/settings), and clicking on `+ New Access Token`. You can give this access token any name.
 
-The year start date defines which classes the student is currently in. Only classes that are currently active will have their assignments updated. The year start date must be a `Date` object. For example, `const yearStartDate = new Date('2020-07-01')`.
+#### Student Canvas
+Acts as an interface for everything a student can see on their course page. This includes read status for announcements and the status of their assignments.
 
-To create the student object and populate it, you must run `const student = await Canvas.create(<ACCESS-TOKEN>, yearStartDate)`.
-To access a course, you can run `const courses = student.getCourses({active: <BOOLEAN>, code: <STRING>})`. This will create an array of `Course` objects. If `active` is set to `true`, then only courses after `yearStartDate` will be included. If `code` is set, then only courses who's course code contains the string will be included.
+To create an instance of StudentCanvas, use `const canvas = new StudentCavas(ACCESS_TOKEN, SUBDOMAIN)`.
 
-Each of the array elements is a `Course` object.
+StudentCanvas Methods:
+* `getActiveCourses()`: Gets basic information about all courses the user is currently enrolled in. This does not include announcements or assignments.
+* `getAllCourses()`: Gets basic information about all courses the user has ever been enrolled in. This does not include announcements or assignments.
+* `getAnnouncements(COURSE_IDS)`: Get the announcements for all courses in `COURSE_IDS`.
+* `getAssignments(COURSE_IDS)`: Get the assignments for all courses in `COURSE_IDS`.
+* `getCourseExtras(COURSE_IDS)`: Gets both announcements and assignments for courses in `COURSE_IDS`.
+* `update()`: Refreshes all courses, announcements, and assignments that are currently stored.
+#### Redacted Canvas
+This has most of the same functions as the student canvas, but it removes all sensitive information and autopopulates all currently active lectures.
+
+To create an instance of RedactedCanvas, use `const canvas = await RedactedCanvas.setup(ACCESS_TOKEN, SUBDOMAIN)`.
+
+The `update` method of RedactedCanvas only updates active courses.
 
 ### Course Object
 Course objects Contain the following properties:
