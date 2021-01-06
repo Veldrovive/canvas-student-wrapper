@@ -21,7 +21,7 @@ class Course {
          * announcements - An empty object that will contain the course announcements
          * assignments - An empty object that will contain the course assignments
          */
-        const { course_code, name, id } = courseObj
+        const { course_code, name } = courseObj
         // We assume the code format will be the one outlined here https://politics.utoronto.ca/undergraduate/courses/codes/
         // We capture the code that is some uppercase letters followed by some digits followed by an H or Y followed by a number from 1 to 9.
         const short_course_code = (course_code.match(/[A-Z]+[0-9]+(?=[HY][1-9])/g) || [null])[0]
@@ -198,7 +198,7 @@ export default class StudentCavas {
     constructor (accessToken, subdomain) {
         this.accessToken = accessToken
         this.subdomain = subdomain
-        this.canvasInterface = createCanvasInterface(accessToken, subdomain, { defaultPageLength: 100, debug: true })
+        this.canvasInterface = createCanvasInterface(accessToken, subdomain, { defaultPageLength: 100 })
 
         this.activeCourses = null  // Stores the courseIds of all active courses
         this.courses = {}  // Stores courses where the key is the courseId
@@ -235,6 +235,10 @@ export default class StudentCavas {
             include: [ 'term', 'course_image', 'total_students', 'teachers', 'tabs' ]
         })
         for (const course of courses) {
+            if (course.course_code == null) {
+                // Some courses are restricted access. We just ignore them.
+                continue
+            }
             const { id } = course
             course.active = this.activeCourses != null ? this.activeCourses.includes(id) : null
             if (id in this.courses) {

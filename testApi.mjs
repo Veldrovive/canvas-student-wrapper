@@ -7,6 +7,8 @@ async function testCanvasStudent () {
     console.log('Active Course Ids:', canvas.activeCourses)
     console.log('Active Courses:', Object.values(canvas.courses).map(course => ({ code: course.short_course_code, name: course.name, lec: course.is_lecture, active: course.active, id: course.id })))
 
+    await canvas.getAllCourses()
+
     await canvas.getCourseExtras(171419)
     const announcements = canvas.courses[171419].announcements
     const assignments = canvas.courses[171419].assignments
