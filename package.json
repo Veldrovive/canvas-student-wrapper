@@ -4,7 +4,6 @@
   "version": "1.0.0",
   "author": "Aidan Dempster <aidan.dempster@gmail.com> (http://aidandev.ca)",
   "main": "canvas.mjs",
-
   "scripts": {
     "start": "node testApi.mjs"
   },
@@ -17,6 +16,7 @@
     "url": "https://github.com/Veldrovive/canvas-student-wrapper/issues"
   },
   "dependencies": {
-    "canvas-api-wrapper": "^3.3.5"
+    "canvas-api-wrapper": "^3.3.5",
+    "simple-canvas-interface": "^0.1.3"
   }
 }
