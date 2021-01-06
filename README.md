@@ -34,15 +34,15 @@ Course objects Contain the following properties:
 | --- | --- |
 | `id` | A number that uniquely identifies the course on canvas. |
 | `name` | The long, descriptive name of the course. |
-| `code` | The short name of the course. |
+| `code` | The course code. |
 | `startDate` | A date object with the start date of the course. |
 | `active` | A boolean representing whether the student is currently in the course. |
 | `calendarLink` | A link to an ics file that has the course calendar. |
-| `term` | An object with the keys `name`, `start`, and `end` that represents the term the course was taken in. |
+| `term` | An object with the keys `name`, `startDate`, and `endDate` that represents the term the course was taken in. |
 | `courseImg` | A link to the front image of the course. |
 | `totalStudents` | The total number of students in the course. |
-| `teachers` | An array of objects with the keys `id` and `display_name` that identify the course instructors. |
-| `tabs` | An array of objects with the keys `label` and `full_url` that point to canvas pages. |
+| `teachers` | An array of objects with the keys `avatar`, `link`, and `name` that identify the course instructors. |
+| `tabs` | An array of objects with the keys `id`, `label`, `link`, `position`, and `type` that point to canvas pages. |
 | `announcements` | An array of `Annoucement` objects (Reference Below). |
 | `assignments` | An array of `Assignment` objects (Reference Below). |
 
@@ -54,10 +54,10 @@ Annoucement objects contain the following properties:
 | `position` | Number that sorts the annoucements. |
 | `title` | The title of the annoucement. |
 | `message` | The body text of the annoucement |
-| `created` | A date object that represents the time when the announcement was posted. |
 | `read` | Whether the user has opened this announcement. |
 | `author` | An object with a `name` key that identifies the person who posted the announcement. |
 | `link` | A link to the announcement page. |
+| `date` | The date that the announcement was made. |
 
 ### Assignment Object
 Assignment objects contain the following properties:
@@ -74,6 +74,8 @@ Assignment objects contain the following properties:
 | `submitted` | A boolean representing whether the user has submitted. |
 | `link` | A link to the assignment page. |
 | `submission` | A `Submission` object. (Reference Below) |
+| `possiblePoints` | A number representing the max number of points on the assignment |
+| `submitted` | Whether the student has submitted this assignment. |
 
 ### Submission Object
 Submission objects contain the following properties:
