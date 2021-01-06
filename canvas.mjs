@@ -415,7 +415,7 @@ export class RedactedCanvas extends StudentCavas {
 
     toJSON () {
         const courses = {}
-        for (const lecture of this.activeLecturesList) {
+        for (const lecture of Object.values(this.courses)) {
             const { id } = lecture
             const lec = lecture.toJSON()
             for (const assignment of lec.assignments) {
